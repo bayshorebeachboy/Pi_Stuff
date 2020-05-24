@@ -1,0 +1,11 @@
+01110000
+
+position 0  = 0 0*2^7		GPIO pin - 14
+position 1  = 1 1*2^6 = 64	GPIO pin - 15
+position 2  = 1 1*2^5 = 32	GPIO pin - 18
+position 3  = 1 1*2^4 = 16	GPIO pin - 23
+position 4  = 0 0*2^3		GPIO pin - 24
+position 5  = 0 0*2^2		GPIO pin - 25
+position 6  = 0 0*2^1		GPIO pin -  8
+position 7  = 0 0*2^0		GPIO pin -  7
+                 = 112

@@ -1,0 +1,4 @@
+Re: Connecting RJ-11 plug of Davis 7852 Rain Collector to Arduino
+
+Sep 28, 2014, 12:00 am
+Every bucket based rain meter I've ever seen you push VCC down one wire (the red one in this case) and then tie the other wire to an interrupt capable pin. Every tip of the bucket equals some quantity of rain, and you just count the interrupts as they happen to measure accumulated rainfall.

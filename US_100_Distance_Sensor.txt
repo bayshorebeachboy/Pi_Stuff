@@ -1,0 +1,28 @@
+The US-100 Ultrasonic Distance Sensor Module operates from a wide voltage range and provides both digital and serial data output modes.
+
+The US-100 features accurate temperature corrected range detection. It can output the distance in millimeters using a serial data output mode. Alternatively, the distance can be calculated by measuring the amount of time that a digital output is held high.
+
+This sensor can be used with both 3.3V and 5V microcontrollers and only consumes 2mA when idle.
+Using the US-100 Ultrasonic Distance Sensor Module
+
+Connect the VCC and GND pins to a 2.4V-5.5V power supply. The usage of the other pins depends on the operating mode selected. Select the operating mode of the US-100 Ultrasonic Distance Sensor by using the jumper on the back of the module. When the jumper is present, the sensor outputs the distance as binary serial data, otherwise the sensor outputs a single pulse that has a width which represents the distance measured.
+Using the US-100 Distance Sensor in Serial Data Mode
+
+Place the shunt on the operating mode selection jumper to choose serial data mode. Attach the module to a serial port on your microcontroller. The Trig/TX pin connects to your microcontroller's TX serial transmit line. The Echo/RX pin connects to your microcontroller's RX serial receive line. Set the microcontroller's serial port to use 9600 baud at 8-N-1 (eight data bits, no parity, one stop bit).
+
+To start measuring the distance, output a 0x55 over the serial port and read back the two byte distance in high byte, low byte format. The distance returned is measured in millimeters. Use the following formula to obtain the distance as millimeters:
+
+    Millimeters = FirstByteRead * 256 + SecondByteRead
+
+This module can also output the temperature when using serial output mode. To read the temperature, output a 0x50 byte over the serial port and read back a single temperature byte. The actual temperature is obtained by using the following formula:
+
+    Celsius = ByteRead - 45
+
+Using the US-100 Sensor in Pulse Width Mode
+
+Select the pulse mode by removing the shunt from the operating mode selection jumper. Connect the Trig/TX pin to a digital output on your microcontroller and the Echo/RX pin to a digital input.
+
+To obtain a distance measurement, set the Trig/TX pin high for at least 50 microseconds then set it low to trigger the measurement. The module will output a high pulse on the Echo/RX line with a width that corresponds to the distance measured. Use your microcontroller to measure the pulse width using microseconds. Use the following formula to calculate the distance:
+
+    Millimeters = PulseWidth * 34 / 100 / 2
+
